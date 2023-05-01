@@ -1,43 +1,18 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import tailwindCSSLogo from "./assets/tailwindcss.svg";
-import "./App.css";
+import AddTodo from "./components/add-todo/add-todo";
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const [newTodo, setNewTodo] = useState("");
+  const handleAddTodo = (e: any) => {
+    console.log(e.target?.value);
+    setNewTodo(e.target.value);
+  };
   return (
-    <div className="App">
-      <div className="flex justify-center">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        <a href="https://tailwindcss.com" target="_blank">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
-            className="logo tailwind"
-            alt="TailwindCSS logo"
-          />
-        </a>
+    <div className="flex justify-center">
+      <div className="flex-col space-y-10">
+        <h1 className="font-semibold text-blue-400">React Todo List</h1>
+        <AddTodo newTodo={newTodo} setNewTodo={handleAddTodo} />
       </div>
-      <h1 className="font-bold">Vite + React + TailwindCSS</h1>
-      <div className="card">
-        <button
-          className="text-blue-400"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   );
 }
